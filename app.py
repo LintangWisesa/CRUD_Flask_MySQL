@@ -18,7 +18,7 @@ CORS(app)
 def index():
     return render_template('home.html')
 
-@app.route('/data', methods=['POST', 'GET', 'DELETE', 'PUT'])
+@app.route('/data', methods=['POST', 'GET'])
 def data():
     
     if request.method == 'POST':
@@ -27,7 +27,7 @@ def data():
         age = body['age']
 
         cursor = mysql.connection.cursor()
-        cursor.execute('INSERT INTO users VALUES(' + name + ', ' + age + ')')
+        cursor.execute('INSERT INTO users VALUES(null, %s, %s)', (str(name), str(age)))
         mysql.connection.commit()
         cursor.close()
         return jsonify({
@@ -38,25 +38,36 @@ def data():
     
     if request.method == 'GET':
         cursor = mysql.connection.cursor()
-        data = cursor.execute('SELECT * FROM USERS')
-        if data > 0:
-            users = cursor.fetchall()
-            print (users)
-            return jsonify(users)
+        cursor.execute('SELECT * FROM users')
+        users = cursor.fetchall()
+        allData = []
 
-    if request.method == 'PUT':
-        cursor = mysql.connection.cursor()
-        cursor.execute('UPDATE users SET name = %s, age = %s WHERE name = "Andi"', ('Alibaba', 32))
-        mysql.connection.commit()
-        cursor.close()
-        return jsonify({'status': 'Data updated on MySQL!'})
+        for i in range(len(users)):
+            id = users[i][0]
+            name = users[i][1]
+            age = users[i][2]
+            dataDict = {
+                "id": id,
+                "name": name,
+                "age": age
+            }
+            allData.append(dataDict)
 
-    else:
-        cursor = mysql.connection.cursor()
-        cursor.execute('DELETE FROM users WHERE name = "Euis"')
-        mysql.connection.commit()
-        cursor.close()
-        return jsonify({'status': 'Data deleted on MySQL!'})
+        return jsonify(allData)
+
+    # if request.method == 'PUT':
+    #     cursor = mysql.connection.cursor()
+    #     cursor.execute('UPDATE users SET name = %s, age = %s WHERE name = "Andi"', ('Alibaba', 32))
+    #     mysql.connection.commit()
+    #     cursor.close()
+    #     return jsonify({'status': 'Data updated on MySQL!'})
+
+    # else:
+    #     cursor = mysql.connection.cursor()
+    #     cursor.execute('DELETE FROM users WHERE name = "Euis"')
+    #     mysql.connection.commit()
+    #     cursor.close()
+    #     return jsonify({'status': 'Data deleted on MySQL!'})
 
 if __name__ == '__main__':
     app.run(debug = True)
