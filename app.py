@@ -21,6 +21,7 @@ def index():
 @app.route('/data', methods=['POST', 'GET'])
 def data():
     
+    # POST a data to database
     if request.method == 'POST':
         body = request.json
         name = body['name']
@@ -36,6 +37,7 @@ def data():
             'age': age
         })
     
+    # GET all data from database
     if request.method == 'GET':
         cursor = mysql.connection.cursor()
         cursor.execute('SELECT * FROM users')
@@ -58,6 +60,7 @@ def data():
 @app.route('/data/<string:id>', methods=['GET', 'DELETE', 'PUT'])
 def onedata(id):
 
+    # GET a specific data by id
     if request.method == 'GET':
         cursor = mysql.connection.cursor()
         cursor.execute('SELECT * FROM users WHERE id = %s', (id))
@@ -76,6 +79,7 @@ def onedata(id):
             data.append(dataDict)
         return jsonify(data)
         
+    # DELETE a data
     if request.method == 'DELETE':
         cursor = mysql.connection.cursor()
         cursor.execute('DELETE FROM users WHERE id = %s', (id))
@@ -83,6 +87,7 @@ def onedata(id):
         cursor.close()
         return jsonify({'status': 'Data '+id+' is deleted on MySQL!'})
 
+    # UPDATE a data by id
     if request.method == 'PUT':
         body = request.json
         name = body['name']
