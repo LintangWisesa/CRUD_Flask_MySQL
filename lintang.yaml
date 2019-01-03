@@ -1,0 +1,4 @@
+host: 'localhost'
+user: 'lintang'
+pass: '12345'
+db: 'lin_flask'
