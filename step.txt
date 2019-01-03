@@ -12,4 +12,12 @@
         primary key (id)
         );
 
-3. 
+3. Run the server (app.py)
+    $ python app.py
+
+4. Try to request:
+    Get all data =>     GET /data
+    Get data by id =>   GET /data/{:id}
+    Post a data =>      POST /data      => body req: {name:"x", age:"y"}
+    Update a data =>    PUT /data/{:id} => body req: {name:"x", age:"y"}
+    Delete a data =>    DELETE /data/{:id}
