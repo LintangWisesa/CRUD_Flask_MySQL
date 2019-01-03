@@ -5,7 +5,7 @@ import yaml
 
 app = Flask(__name__)
 
-db = yaml.load(open('lintang.yaml'))
+db = yaml.load(open('database.yaml'))
 app.config['MYSQL_HOST'] = db['host']
 app.config['MYSQL_USER'] = db['user']
 app.config['MYSQL_PASSWORD'] = db['pass']

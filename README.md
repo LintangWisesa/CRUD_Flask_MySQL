@@ -15,6 +15,8 @@
     $ mysql.exe -u lintang -p12345
     ```
 
+#
+
 2. Create a database & table on MySQL. I'll use a database called __"lin_flask"__ & a table called __"users"__:
     
     ```bash
@@ -27,17 +29,24 @@
                 primary key (id)
             );
     ``` 
-3. Clone this repo. Edit __lintang.yaml__ file according to your database configuration, then install all the packages needed. I'm using __flask__, __flask_cors__ & __flask_mysqldb__:
+
+#
+
+3. Clone this repo. Edit __database.yaml__ file according to your database configuration, then install all the packages needed. In this project I'm using __flask__, __flask_cors__ & __flask_mysqldb__:
     ```bash
     $ git clone https://github.com/LintangWisesa/CRUD_Flask_MySQL.git
     $ cd CRUD_Flask_MySQL
     $ pip install flask flask_cors flask_mysqldb
     ```
 
+#
+
 4. Run the server file. Make sure your MySQL server is still running. Your application server will run locally at __*http://localhost:5000/*__ :
     ```bash
     $ python app.py
     ```
+
+#
 
 5. Give a request to the server. You can use __Postman__ app:
     
@@ -66,7 +75,9 @@
     DELETE /data/{:id}
     ```
 
-6. Done! 😎👌
+#
+
+6. Enjoy your code! 😎👌
 
 #
 
