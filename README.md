@@ -29,8 +29,8 @@
     ``` 
 3. Clone this repo. Edit __lintang.yaml__ file according to your database configuration, then install all the packages needed. I'm using __flask__, __flask_cors__ & __flask_mysqldb__:
     ```bash
-    $ git clone xyz
-    $ cd xyz
+    $ git clone https://github.com/LintangWisesa/CRUD_Flask_MySQL.git
+    $ cd CRUD_Flask_MySQL
     $ pip install flask flask_cors flask_mysqldb
     ```
 
