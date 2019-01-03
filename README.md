@@ -27,14 +27,19 @@
                 primary key (id)
             );
     ``` 
-3. Clone this repo. Edit __lintang.yaml__ file according to your database configuration, then run the server file. Make sure your MySQL server is still running. Your application server will run locally at __*http://localhost:5000/*__ :
+3. Clone this repo. Edit __lintang.yaml__ file according to your database configuration, then install all the packages needed. I'm using __flask__, __flask_cors__ & __flask_mysqldb__:
     ```bash
     $ git clone xyz
     $ cd xyz
+    $ pip install flask flask_cors flask_mysqldb
+    ```
+
+4. Run the server file. Make sure your MySQL server is still running. Your application server will run locally at __*http://localhost:5000/*__ :
+    ```bash
     $ python app.py
     ```
 
-4. Give a request to the server. You can use __Postman__ app:
+5. Give a request to the server. You can use __Postman__ app:
     
     __See the opening screen (*home.html*)__
     ```bash
@@ -61,7 +66,7 @@
     DELETE /data/{:id}
     ```
 
-5. Done! 😎👌
+6. Done! 😎👌
 
 #
 
