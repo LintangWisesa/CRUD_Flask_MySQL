@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import abort, Flask, jsonify, render_template, request
 from flask_cors import CORS
 from flask_mysqldb import MySQL
 import yaml
@@ -64,7 +64,6 @@ def onedata(id):
         users = cursor.fetchall()
         print(users)
         data = []
-
         for i in range(len(users)):
             id = users[i][0]
             name = users[i][1]
@@ -75,22 +74,25 @@ def onedata(id):
                 "age": age
             }
             data.append(dataDict)
-
         return jsonify(data)
+        
+    if request.method == 'DELETE':
+        cursor = mysql.connection.cursor()
+        cursor.execute('DELETE FROM users WHERE id = %s', (id))
+        mysql.connection.commit()
+        cursor.close()
+        return jsonify({'status': 'Data '+id+' is deleted on MySQL!'})
 
     if request.method == 'PUT':
-        cursor = mysql.connection.cursor()
-        cursor.execute('UPDATE users SET name = %s, age = %s WHERE name = "Andi"', ('Alibaba', 32))
-        mysql.connection.commit()
-        cursor.close()
-        return jsonify({'status': 'Data updated on MySQL!'})
+        body = request.json
+        name = body['name']
+        age = body['age']
 
-    else:
         cursor = mysql.connection.cursor()
-        cursor.execute('DELETE FROM users WHERE name = "Euis"')
+        cursor.execute('UPDATE users SET name = %s, age = %s WHERE id = %s', (name, age, id))
         mysql.connection.commit()
         cursor.close()
-        return jsonify({'status': 'Data deleted on MySQL!'})
+        return jsonify({'status': 'Data '+id+' is updated on MySQL!'})
 
 if __name__ == '__main__':
     app.run(debug = True)
