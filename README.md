@@ -15,7 +15,7 @@
     $ mysql.exe -u lintang -p12345
     ```
 
-2. Create a database & table on MySQL. I'll create a database called __"lin_flask"__ & a table called __"users"__:
+2. Create a database & table on MySQL. I'll use a database called __"lin_flask"__ & a table called __"users"__:
     
     ```bash
     mysql>  CREATE DATABASE lin_flask;
@@ -34,7 +34,7 @@
     $ python app.py
     ```
 
-4. Give a request to the server:
+4. Give a request to the server. You can use __Postman__ app:
     
     __See the opening screen (*home.html*)__
     ```bash
