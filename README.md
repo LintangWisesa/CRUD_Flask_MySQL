@@ -36,6 +36,11 @@
 
 4. Give a request to the server:
     
+    __See the opening screen (*home.html*)__
+    ```bash
+    GET /
+    ```
+
     __Post a data to database:__ 
     ```bash
     POST /data
@@ -55,6 +60,8 @@
     ```bash
     DELETE /data/{:id}
     ```
+
+5. Done! 😎👌
 
 #
 
