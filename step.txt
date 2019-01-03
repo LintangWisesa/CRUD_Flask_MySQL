@@ -1,0 +1,15 @@
+1. Activate MySQL server
+    $ cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+    $ mysql.exe -u lintang -p12345
+
+2. create 'lin_flask' database & 'users' table
+    $ create database lin_flask;
+    $ use lin_flask;
+    $ create table users (
+        id int auto_increment,
+        name varchar(100) not null,
+        age tinyint,
+        primary key (id)
+        );
+
+3. 

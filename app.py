@@ -22,11 +22,19 @@ def index():
 def data():
     
     if request.method == 'POST':
+        body = request.json
+        name = body['name']
+        age = body['age']
+
         cursor = mysql.connection.cursor()
-        cursor.execute('INSERT INTO users VALUES(%s, %s)', ('Fafa', 22))
+        cursor.execute('INSERT INTO users VALUES(' + name + ', ' + age + ')')
         mysql.connection.commit()
         cursor.close()
-        return jsonify({'status': 'Data posted to MySQL!'})
+        return jsonify({
+            'status': 'Data is posted to MySQL!',
+            'name': name,
+            'age': age
+        })
     
     if request.method == 'GET':
         cursor = mysql.connection.cursor()
