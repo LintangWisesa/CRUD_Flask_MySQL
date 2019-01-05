@@ -79,6 +79,12 @@
 
 6. Enjoy your code! 😎👌
 
+## See also:
+
+- [Basic CRUD: Flask & MySQL](https://github.com/LintangWisesa/CRUD_Flask_MySQL)
+- [Basic CRUD: Flask & PostgreSQL](https://github.com/LintangWisesa/CRUD_Flask_PostgreSQL)
+- [Basic CRUD: Flask & MongoDB](https://github.com/LintangWisesa/CRUD_Flask_MongoDB)
+
 #
 
 #### Lintang Wisesa :love_letter: _lintangwisesa@ymail.com_
