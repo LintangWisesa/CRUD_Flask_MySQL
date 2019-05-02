@@ -7,12 +7,14 @@
     ```bash
     $ cd C:\Program Files\MySQL\MySQL Server 8.0\bin
     $ mysql.exe -u <username> -p<password>
+    $ mysql -u <username> -p
     ```
     
     On my case:
     
     ```bash
     $ mysql.exe -u lintang -p12345
+    $ mysql -u lintang -p   
     ```
 
 #
@@ -36,14 +38,21 @@
     ```bash
     $ git clone https://github.com/LintangWisesa/CRUD_Flask_MySQL.git
     $ cd CRUD_Flask_MySQL
+    ```
+    Install dependencies:
+
+    ```bash
     $ pip install flask flask_cors flask_mysqldb
+    $ py -m pip install flask flask_cors flask_mysqldb
     ```
 
 #
 
 4. Run the server file. Make sure your MySQL server is still running. Your application server will run locally at __*http://localhost:5000/*__ :
     ```bash
+    $ py app.py
     $ python app.py
+    $ python3 app.py
     ```
 
 #
